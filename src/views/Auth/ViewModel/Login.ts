@@ -1,22 +1,40 @@
 import { useState } from 'react';
 import { login } from '../../../services/auth';
 import { navigation } from '../../../routes';
+import { useForm } from '../../../hooks/useForm';
+
+interface LoginProps {
+  username: string;
+  password: string;
+}
+
+
 
 export const useViewModel = () => {
-  const [form, setForm] = useState<{ username: string; password: string }>({
+  const mockUser = {
+    username: 'euramfilho@gmail.com',
+    password: 'Glockg19x',
+  }
+
+  const mock = {
     username: '',
-    password: '',
-  });
+    password: ''
+  }
+
   const { navigate } = navigation();
-  const onChangeText = (object: any) => {
-    setForm({ ...form, ...object });
-  };
+  const [loading, setLoading] = useState<boolean>(false)
+  const [form, setForm] = useForm<LoginProps>(mock)
 
   const signIn = async () => {
-    const response = await login(form);
-    if (response) {
-      console.log('Login efetuado com sucesso');
-      navigate('Home');
+    try {
+      setLoading(true);
+      const response = await login(form);
+      if (response) {
+        setLoading(false)
+        navigate('Home');
+      }
+    } catch (error) {
+      setLoading(false)
     }
   };
 
@@ -24,5 +42,5 @@ export const useViewModel = () => {
 
 
 
-  return { signIn, onChangeText, form };
+  return { signIn, setForm, form, loading };
 };

@@ -44,6 +44,14 @@ export const mock = [
                 "sn": "ccc888242943",
                 "timestamp": "2024-06-29 09:29:51",
                 "updatetime": "2024-06-29 11:09:41"
+            },
+            {
+                "createtime": "2024-06-29 11:19:18",
+                "latitude": -3.7970297,
+                "longitude": -38.569412,
+                "sn": "ccc101043f91",
+                "timestamp": "2024-06-29 10:35:39",
+                "updatetime": "2024-06-29 11:19:18"
             }
         ],
         "icon": "0",

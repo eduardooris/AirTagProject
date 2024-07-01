@@ -1,17 +1,19 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   NavigationContainer,
   useNavigation,
   NavigationProp,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../views/Home/View/Home';
 import Login from '../views/Auth/View/Login';
-import {SocketProvider, useSocket} from '../services/SocketContext';
-import {useSelector} from 'react-redux';
+import CreateTag from '../views/Tags/View/CreateTag';
+import { SocketProvider, useSocket } from '../services/SocketContext';
+import { useSelector } from 'react-redux';
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
+  CreateTag: undefined;
 };
 
 export const navigation = () => {
@@ -21,13 +23,13 @@ export const navigation = () => {
     navigation.navigate(name, params);
   };
 
-  return {navigate};
+  return { navigate };
 };
 
-const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
+const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 export default function Router() {
-  const {callerId} = useSelector((state: any) => ({
+  const { callerId } = useSelector((state: any) => ({
     callerId: state.dados.profile._id,
   }));
 
@@ -45,6 +47,13 @@ export default function Router() {
           <Screen
             name="Login"
             component={Login}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Screen
+            name="CreateTag"
+            component={CreateTag}
             options={{
               headerShown: false,
             }}

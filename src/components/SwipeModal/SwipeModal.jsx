@@ -1,14 +1,11 @@
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
-import {Text} from '../Text/Text';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import {DesignSystem} from '../../util/Style/DesignSystem';
+import { View, StyleSheet } from 'react-native';
+import { DesignSystem } from '../../util/Style/DesignSystem';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const SwipeModalWithText = ({
   visible,
   closeModal,
-  titleHeader,
   height,
-  icon,
   background = DesignSystem.colors.primary,
   children,
   borderColor = DesignSystem.colors.primary,
@@ -20,26 +17,10 @@ const SwipeModalWithText = ({
         <View
           style={[
             styles.containerContent,
-            {marginTop: `${height}%`, backgroundColor: borderColor},
+            { marginTop: hp(height), backgroundColor: borderColor },
           ]}>
-          <View style={[styles.container, {backgroundColor: background}]}>
-            <TouchableOpacity
-              onPress={() => closeModal(false)}
-              style={styles.containerHeader}>
-              {icon && (
-                <View>
-                  <MaterialIcon
-                    allowFontScaling={false}
-                    name={icon}
-                    color={DesignSystem.colors.disabled}
-                    size={DesignSystem.icons.small}
-                  />
-                </View>
-              )}
-              <View>
-                <Text typography="medium">{titleHeader}</Text>
-              </View>
-            </TouchableOpacity>
+          <View style={[styles.container, { backgroundColor: background }]}>
+  
             <View style={styles.containerChildren}>{children}</View>
           </View>
         </View>
@@ -62,11 +43,11 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // backgroundColor: cssGlobal.grayLight,
     borderRadius: 30,
   },
   containerHeader: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 20,
     paddingHorizontal: 20,

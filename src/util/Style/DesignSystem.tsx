@@ -1,10 +1,12 @@
 export const DesignSystem = {
   colors: {
     primary: '#FFF',
-    secondary: "#028109",
+    secondary: '#31bc64',
     tertiary: '#1A1C22',
-    test: "#5568FE",
-    test2: "#050A0E",
+    gray: '#f3f3f3',
+    test: '#5568FE',
+    test2: '#050A0E',
+    cinza: "#545454",
     white: '#FFFFFF',
     disabled: '#A0A0A0',
     success: '#4CAF50',
@@ -18,7 +20,7 @@ export const DesignSystem = {
   },
   typography: {
     small: 15,
-    medium: 25,
+    medium: 22,
     large: 35,
     headline: 'bold',
   },
